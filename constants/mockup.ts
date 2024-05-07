@@ -51,35 +51,39 @@ export const MOCKUP_GALLERY = [
 export const MOCKUP_HOUSE_COLLECTION: HouseCollectionsType[] = [
     {
         title: "NEEDLE & CHAIN",
-        image: "https://media.discordapp.net/attachments/1230179117899583559/1234532228122415166/kedimeme.png?ex=6638537b&is=663701fb&hm=14287830de77c27a387ab9de8b412a0ead49f46484d503e14290f076a105d3f6&=&format=webp&quality=lossless&width=354&height=350",
-        description: "",
-        images: [],
-        link: "i dont fucknig remember",
-        type: "upcoming"
+        image: "public\house-collections\needlechain\needlechain.png",
+        description: "Needle & Chain provides NFTees as a service for a procured collection of partners to provide their communities a full service phygital experience. We provide packages that meet all your needs and secure premium quality merch to the blockchain.",
+        images: ["/house-collection/needlechain/1.gif"],
+        link: "https://docs.google.com/forms/d/e/1FAIpQLSckFgwxgNTnYtgyL-rD8q1MoQGMjXj_sYH1BtFMkfDUaNebeQ/viewform",
+        type: "upcoming",
+        url:"needle-and-chain"
     },
     {
         title: "ROYALTEES",
-        image: "https://media.discordapp.net/attachments/1230179117899583559/1234532228122415166/kedimeme.png?ex=6638537b&is=663701fb&hm=14287830de77c27a387ab9de8b412a0ead49f46484d503e14290f076a105d3f6&=&format=webp&quality=lossless&width=354&height=350",
-        description: "",
-        images: [],
-        link: "",
-        type: "current"
+        image: "public\house-collections\royaltees\royaltees.png",
+        description: "Our Genesis 100 OG NFTee Collection was our first, launching on ZooCoin NFT Marketplace in April of 2021, and subsequently migrating to Paintswap. These NFTees are focused on celebrating the Fantom Ecosystem. Each holder earns royalties earned by the contract from primary and secondary sales, and subsequent collections will also funnel royaltees to holders of these 100 NFTees.",
+        images: ["/house-collection/royaltees/1.gif","/house-collection/royaltees/2.gif","/house-collection/royaltees/3.gif"],
+        link: "https://paintswap.finance/marketplace/fantom/collections/officialnftees",
+        type: "current",
+        url:"royaltees"
     },
     {
         title: "LIFESTYLE",
-        image: "https://media.discordapp.net/attachments/1230179117899583559/1234532228122415166/kedimeme.png?ex=6638537b&is=663701fb&hm=14287830de77c27a387ab9de8b412a0ead49f46484d503e14290f076a105d3f6&=&format=webp&quality=lossless&width=354&height=350",
-        description: "",
-        images: [],
-        link: "",
-        type: "current"
+        image: "public\house-collections\lifestyle\lifestyle.png",
+        description: "This collection features incredibly customized and unique collaborations with artists, pushing the boundries of artistic mediums and canvases and exploring the idea of what a physical NFT can be.",
+        images: ["/house-collection/lifestyle/1.png","/house-collection/lifestyle/2.png","/house-collection/lifestyle/3.png"],
+        link: "https://paintswap.finance/marketplace/fantom/collections/officialnftees-lifestyle-collection/nfts",
+        type: "current",
+        url:"lifestyle"
     },
     {
         title: "COMMUNITEES",
-        image: "https://media.discordapp.net/attachments/1230179117899583559/1234532228122415166/kedimeme.png?ex=6638537b&is=663701fb&hm=14287830de77c27a387ab9de8b412a0ead49f46484d503e14290f076a105d3f6&=&format=webp&quality=lossless&width=354&height=350",
-        description: "",
-        images: [],
-        link: "",
-        type: "past"
+        image: "public\house-collections\communitees\communitees.png",
+        description: "The CommuniTee Collection pays homage to the OG 8-bit NFT projects on Fantom as well as several OG protocols and influencers within the the Fantom community. This collection recognizes that the 100 OG NFTees are not accessible to all members of the community, and seeks to grow our engagement. This contract will earn Royaltees for 100 OG NFTee holders.",
+        images: ["/house-collection/communitees/1.png","/house-collection/communitees/2.jpg","/house-collection/communitees/3.png"],
+        link: "https://paintswap.finance/marketplace/fantom/collections/officialnftees-communitee-collection",
+        type: "past",
+        url:"communitees"
     }
 ]
 

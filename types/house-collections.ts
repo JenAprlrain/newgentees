@@ -4,5 +4,6 @@ export type HouseCollectionsType = {
     link: string;
     images: string[];
     image: string;
+    url:string;
     type: "upcoming" | "current" | "past";
 }
