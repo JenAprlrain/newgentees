@@ -15,15 +15,15 @@ export const Dropdown = ({
   onSelectChange,
 }: DropdownArgs) => (
   <div className="flex flex-row">
-    <Menu as="div" className="relative z-10">
+    <Menu as="div">
       <Menu.Button>
-        <div className="flex flex-row gap-2 relative z-10">
+        <div className="flex flex-row gap-2">
           <div>{label}</div>
           <div className="text-matrix-green">{selectedItem}</div>
           <CaretDown />
         </div>
       </Menu.Button>
-      <Menu.Items className="absolute flex flex-col bg-black rounded-md border border-matrix-green right-0 z-10">
+      <Menu.Items className="flex flex-col bg-black rounded-md border border-matrix-green right-0 z-10">
         {items.map((item) => (
           <Menu.Item key={item}>
             {({ active }) => (

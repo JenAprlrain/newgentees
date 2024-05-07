@@ -9,82 +9,15 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useAccount, useDisconnect } from "wagmi";
 import { Button } from "@/components/button";
+import { useNft } from "@/context/NftContext";
 
 export const Tees = () => {
   const [activeItem, setActiveItem] = useState<string>(
     MOCKUP_CONTRACTS[0].name
   );
-  const suiAccount = useCurrentAccount();
-  const ethAccount = useAccount();
   const { openConnectModal } = useConnectModal();
   const { disconnectAsync } = useDisconnect();
-
-  const [nftCollections, setNftCollections] = useState<
-    {
-      name: string;
-      nfts: NFT[];
-    }[]
-  >([]);
-
-  useEffect(() => {
-    if (suiAccount) {
-      getCollections(suiAccount.address).then((collections) => {
-        MOCKUP_CONTRACTS.forEach((contract) => {
-          if (contract.type !== "SUI") return;
-
-          const nfts = collections.filter(
-            (collection) => collection.type === contract.objectType
-          );
-
-          setNftCollections((prev) => [
-            ...prev,
-            {
-              name: contract.name,
-              nfts: [
-                ...nfts.map((nft) => ({
-                  id: nft.id.id,
-                  image: nft.image,
-                  name: nft.name,
-                  collectionAddress: nft.type,
-                })),
-              ],
-            },
-          ]);
-        });
-      });
-    }
-
-    if (ethAccount) {
-      MOCKUP_CONTRACTS.forEach(async (contract) => {
-        if (contract.type !== "EVM") return;
-        if (!ethAccount.address) return;
-
-        try {
-          const nfts = await EVMRead(contract, {
-            address: ethAccount.address,
-          });
-
-          setNftCollections((prev) => [
-            ...prev,
-            {
-              name: contract.name,
-              nfts: [
-                ...nfts.map((nft) => ({
-                  id: nft.id,
-                  image: nft.image,
-                  name: nft.name,
-                  collectionAddress: contract.address,
-                })),
-              ],
-            },
-          ]);
-        } catch (e) {
-          toast.error("Failed to fetch NFTs");
-          return;
-        }
-      });
-    }
-  }, [suiAccount, ethAccount]);
+  const { nftCollections, isEthConnected } = useNft();
 
   return (
     <div className="flex flex-col gap-2">
@@ -92,7 +25,11 @@ export const Tees = () => {
         <div className="flex flex-row gap-2 mb-4">
           <Dropdown
             label="MY TEES:"
-            items={[...MOCKUP_CONTRACTS.map((tee) => tee.name)]}
+            items={[
+              ...MOCKUP_CONTRACTS.filter(
+                (contract) => contract.type === "EVM"
+              ).map((tee) => tee.name),
+            ]}
             selectedItem={activeItem}
             onSelectChange={setActiveItem}
           />
@@ -123,14 +60,14 @@ export const Tees = () => {
       )}
       <Button
         onClick={async () => {
-          if (ethAccount.isConnected) {
+          if (isEthConnected) {
             await disconnectAsync();
           } else {
             openConnectModal && openConnectModal();
           }
         }}
       >
-        {ethAccount.isConnected ? "Disconnect" : "Connect"}
+        {isEthConnected ? "Disconnect" : "Connect"}
       </Button>
     </div>
   );
