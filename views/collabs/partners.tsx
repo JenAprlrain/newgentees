@@ -16,7 +16,7 @@ export const Partners = () => {
             className="flex flex-col gap-2 transition-all duration-500 ease-in-out"
           >
             <div>{partner.title}</div>
-            <div className="h-40 md:h-80 bg-gray-200 flex items-center justify-center">
+            <div className="h-40 md:h-80 flex items-center justify-center">
               <img
                 src={partner.partnerImage}
                 alt={partner.title}

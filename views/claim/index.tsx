@@ -10,7 +10,7 @@ export function ClaimSwag({ claim }: { claim: Claim }) {
           <img
             src={claim.image}
             alt={claim.title}
-            className="w-40 h-full object-cover bg-gray-200"
+            className="max-w-[700px] h-full object-cover"
           />
         </div>
         <section>
