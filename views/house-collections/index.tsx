@@ -1,6 +1,7 @@
 import { MOCKUP_HOUSE_COLLECTION } from "@/constants/mockup";
 import { HouseCollectionsType } from "@/types/house-collections";
 import { useMemo } from "react";
+import Link from "next/link";
 
 export const HouseCollections = () => {
   const HouseCollectionsData: {
@@ -34,54 +35,72 @@ export const HouseCollections = () => {
       <div className="flex flex-col gap-3">
         <div>{">"}Upcoming</div>
         <div className="flex flex-wrap gap-6 sm:pl-10">
-          {HouseCollectionsData.upcoming.map((item, index) => (
+          {HouseCollectionsData.upcoming.map((house, index) => (
+             <Link
+             href={`/degen/house-collection/${house.url}`}
+             key={index}
+             className="flex flex-col gap-2 transition-all duration-500 ease-in-out"
+             >
             <div
               className="flex flex-col gap-2 sm:w-auto w-full sm:items-start items-center"
               key={index}
             >
-              <div>{item.title}</div>
+              <div>{house.title}</div>
               <img
-                src={item.image}
-                alt={item.title}
+                src={house.image}
+                alt={house.title}
                 className="h-40 w-40 object-cover bg-gray-200"
               />
             </div>
+            </Link>
           ))}
         </div>
       </div>
       <div className="flex flex-col gap-3">
         <div>{">"}Current</div>
         <div className="flex flex-wrap gap-6 sm:pl-10">
-          {HouseCollectionsData.current.map((item, index) => (
+          {HouseCollectionsData.current.map((house, index) => (
+             <Link
+             href={`/degen/house-collection/${house.url}`}
+             key={index}
+             className="flex flex-col gap-2 transition-all duration-500 ease-in-out"
+             >
             <div
               className="flex flex-col gap-2 sm:w-auto w-full sm:items-start items-center"
               key={index}
             >
-              <div>{item.title}</div>
+              <div>{house.title}</div>
               <img
-                src={item.image}
-                alt={item.title}
+                src={house.image}
+                alt={house.title}
                 className="h-40 w-40 object-cover bg-gray-200"
               />
             </div>
+            </Link>
           ))}
         </div>
       </div>
       <div className="flex flex-col gap-3">
         <div>{">"}Past</div>
         <div className="flex flex-wrap gap-6 sm:pl-10">
-          {HouseCollectionsData.past.map((item, index) => (
+          {HouseCollectionsData.past.map((house, index) => (
+             <Link
+             href={`/degen/house-collection/${house.url}`}
+             key={index}
+             className="flex flex-col gap-2 transition-all duration-500 ease-in-out"
+             >
             <div
               className="flex flex-col gap-2 sm:w-auto w-full sm:items-start items-center"
               key={index}
             >
-              <div>{item.title}</div>
+              <div>{house.title}</div>
               <img
-                src={item.image}
-                alt={item.title}
+                src={house.image}
+                alt={house.title}
                 className="h-40 w-40 object-cover bg-gray-200"
               />
             </div>
+            </Link>
           ))}
         </div>
       </div>

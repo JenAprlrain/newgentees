@@ -9,6 +9,7 @@ export const PartnersPartner = ({ partner }: { partner: Partner }) => (
       src={partner.partnerImage}
       alt={partner.title}
     />
+    
     <div
       className="text-center text-2xl w-full text-balance"
       dangerouslySetInnerHTML={{
