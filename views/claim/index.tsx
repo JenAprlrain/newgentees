@@ -1,7 +1,13 @@
 import { Button } from "@/components/button";
+import { useNft } from "@/context/NftContext";
 import { Claim } from "@/types/claim";
+import { ConnectModal, useDisconnectWallet } from "@mysten/dapp-kit";
+import { NftsDialog } from "./dialog-nfts";
 
 export function ClaimSwag({ claim }: { claim: Claim }) {
+  const { isSuiConnected } = useNft();
+  const { mutate: disconnect } = useDisconnectWallet();
+
   return (
     <div className="font-normal text-3xl leading-8 text-start flex flex-col gap-10">
       <div className="text-center">{claim.title}</div>
@@ -35,7 +41,11 @@ export function ClaimSwag({ claim }: { claim: Claim }) {
         </section>
         <div className="pr-3">Sizing Charts</div>
       </div>
-      <Button>[CONNECT TO CLAIM]</Button>
+      {isSuiConnected ? (
+        <NftsDialog name={claim.contract.name} nftId={claim.contract.name} />
+      ) : (
+        <ConnectModal trigger={<Button>[CONNECT TO CLAIM]</Button>} />
+      )}
     </div>
   );
 }

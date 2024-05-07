@@ -85,7 +85,7 @@ export async function getCollections(address: string) {
         id: dataContent.fields.id,
         image: imageNFT.data.image_url,
         name: imageNFT.data.name,
-        type: dataContent.dataType,
+        type: dataContent.type,
       };
     })
   );

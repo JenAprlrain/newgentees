@@ -8,6 +8,7 @@ export default function Page() {
   const { partnerName } = router.query;
 
   useEffect(() => {
+    if (!router.isReady) return;
     if (partnerName) {
       const partner = MOCKUP_PARTNERS.find(
         (partner) => partner.link === partnerName

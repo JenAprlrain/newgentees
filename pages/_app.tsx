@@ -15,6 +15,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { WagmiProvider } from "wagmi";
 import { WagmiConfig } from "@/chains/evm";
+import { NftProvider } from "@/context/NftContext";
 
 const queryClient = new QueryClient();
 
@@ -28,14 +29,16 @@ export default function App({ Component, pageProps }: AppProps) {
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider>
           <SuiClientProvider networks={networkConfig} defaultNetwork="mainnet">
-            <WalletProvider storageKey="sui-wallet">
-              <Layout>
-                <Head>
-                  <title>Official Nftees</title>
-                </Head>
-                <Component {...pageProps} />
-              </Layout>
-              <Toaster position="bottom-right" />
+            <WalletProvider storageKey="sui-wallet" autoConnect>
+              <NftProvider>
+                <Layout>
+                  <Head>
+                    <title>Official Nftees</title>
+                  </Head>
+                  <Component {...pageProps} />
+                </Layout>
+                <Toaster position="bottom-right" />
+              </NftProvider>
             </WalletProvider>
           </SuiClientProvider>
         </RainbowKitProvider>

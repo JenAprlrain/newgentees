@@ -1,4 +1,4 @@
-import { MOCKUP_HOUSE_COLLECTION, MOCKUP_PARTNERS } from "@/constants/mockup";
+import { MOCKUP_HOUSE_COLLECTION } from "@/constants/mockup";
 import { HouseCollections } from "@/views/house-collections/house-collections";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -8,6 +8,7 @@ export default function Page() {
   const { houseCollection } = router.query;
 
   useEffect(() => {
+    if (!router.isReady) return;
     if (houseCollection) {
       const house = MOCKUP_HOUSE_COLLECTION.find(
         (house) => house.url === houseCollection
