@@ -67,7 +67,7 @@ export const Tees = () => {
           }
         }}
       >
-        {isEthConnected ? "Disconnect" : "Connect"}
+        {isEthConnected ? "[Disconnect]" : "[Connect]"}
       </Button>
     </div>
   );

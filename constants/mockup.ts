@@ -7,11 +7,18 @@ import { TeesContract } from "@/types/tees";
 export const MOCKUP_CLAIMS: Claim[] = [
   {
     open: "World Of Umans - Sea Umans",
-    care: "",
+    care: `
+    <div>Wash: Cold</div>
+    <div>Dry: Hang Dry Only</div>
+    `,
     chart: "",
     eligibility: "Sea Uman Holders",
     image: "/partners/uman/seauman.png",
-    specs: "",
+    specs: `
+    <div>GARMENT: Tee</div>
+    <div>FABRIC: 100% Dyed Cotton Tee</div>
+    <div>WEIGHT: 225 GSM</div>
+    `,
     successful: "You got a sea uman tshirt!",
     title: "Sea Umans",
     link: "seaumans",
@@ -51,7 +58,7 @@ export const MOCKUP_GALLERY = [
 
 export const MOCKUP_HOUSE_COLLECTION: HouseCollectionsType[] = [
   {
-    title: "NEEDLE & CHAIN",
+    title: ">NEEDLE & CHAIN",
     image: "/house-collections/needlechain/needlechain.png",
     description:
       "Needle & Chain provides NFTees as a service for a procured collection of partners to provide their communities a full service phygital experience. We provide packages that meet all your needs and secure premium quality merch to the blockchain.",
@@ -225,7 +232,7 @@ export const MOCKUP_CONTRACTS: TeesContract[] = [
     type: "EVM",
     abi: CommuniTeesABI,
     address: "0x633763D9174d6B772676920b2309b39eE3A92a8a",
-    name: "Communitees",
+    name: "COLLECTIONS",
   },
   {
     type: "EVM",
@@ -237,7 +244,7 @@ export const MOCKUP_CONTRACTS: TeesContract[] = [
     type: "EVM",
     abi: LifeStyleABI,
     address: "0xe010Ab037418431EeB65D59aAFB5059c13e8FAc2",
-    name: "Lifetyle",
+    name: "Lifestyle",
   },
   ...MOCKUP_CLAIMS.map((claim) => claim.contract),
 ];

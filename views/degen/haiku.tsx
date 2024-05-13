@@ -6,7 +6,7 @@ export const Haiku = () => {
   const [haikuText, setHaikuText] = useState("");
   return (
     <div className="font-normal text-3xl leading-8 text-start flex flex-col gap-6">
-      <div>{"(T)"}Haikus go back to our very roots.</div>
+      <div>Real ones write poems.</div>
       <div className="flex flex-col w-full border-white border text-[#2BE233] text-center gap-10 pt-5">
         {haikuText.length > 0 ? (
           haikuText

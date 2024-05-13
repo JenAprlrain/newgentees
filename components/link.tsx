@@ -12,7 +12,10 @@ export const Link = ({ href, children, className }: LinkProps) => {
   return (
     <NextLink
       href={href}
-      className={cn("hover:underline transition-all duration-300", className)}
+      className={cn(
+        "hover:text-matrix-green transition-all duration-300",
+        className
+      )}
     >
       {">"}
       {children}
