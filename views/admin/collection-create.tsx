@@ -48,6 +48,19 @@ export function CreateCollection() {
       "collection-abi",
       (document.getElementById("collection-abi") as HTMLInputElement).value
     );
+    data.append(
+      "collection-on-successful",
+      (document.getElementById("collection-on-successful") as HTMLInputElement)
+        .value
+    );
+    data.append(
+      "collection-claim-page-text",
+      (
+        document.getElementById(
+          "collection-claim-page-text"
+        ) as HTMLInputElement
+      ).value
+    );
 
     let dataObj: IFormData = {
       "collection-name": data.get("collection-name") as string,
@@ -60,6 +73,12 @@ export function CreateCollection() {
         "collection-contract-name"
       ) as string,
       "collection-abi": data.get("collection-abi") as string,
+      "collection-on-successful": data.get(
+        "collection-on-successful"
+      ) as string,
+      "collection-claim-page-text": data.get(
+        "collection-claim-page-text"
+      ) as string,
     };
 
     if (dataObj["collection-name"].length === 0) {
@@ -108,10 +127,10 @@ export function CreateCollection() {
       dataObj["collection-care"],
       dataObj["collection-eligibility"],
       "",
-      "",
+      dataObj["collection-on-successful"],
       dataObj["collection-name"].toLowerCase().replaceAll(" ", "-"),
       await normalizeImage(dataObj["collection-image"]),
-      true,
+      dataObj["collection-claim-page-text"],
       {
         abi: dataObj["collection-abi"],
         address: dataObj["collection-contract"],
@@ -119,9 +138,13 @@ export function CreateCollection() {
         type: selectedChain === "sui" ? "move" : "evm",
       },
       token
-    ).then(() => {
-      toast.success("Collection created");
-    });
+    )
+      .then(() => {
+        toast.success("Collection created successfully");
+      })
+      .catch(() => {
+        toast.error("Failed to create collection");
+      });
   }
 
   return (
@@ -180,6 +203,24 @@ export function CreateCollection() {
         />
       </div>
       <div className="flex flex-row gap-4">
+        <div>on successful text:</div>
+        <input
+          type="text"
+          className="bg-black text-white"
+          placeholder="[ENTER]"
+          id="collection-on-successful"
+        />
+      </div>
+      <div className="flex flex-row gap-4">
+        <div>claim page text:</div>
+        <input
+          type="text"
+          className="bg-black text-white"
+          placeholder="[ENTER]"
+          id="collection-claim-page-text"
+        />
+      </div>
+      <div className="flex flex-row gap-4">
         <Dropdown
           label="Select Chain:"
           items={["sui", "evm"]}
@@ -228,4 +269,6 @@ interface IFormData {
   "collection-contract": string;
   "collection-contract-name": string;
   "collection-abi": string;
+  "collection-on-successful": string;
+  "collection-claim-page-text": string;
 }

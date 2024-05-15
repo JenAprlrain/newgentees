@@ -1,26 +1,40 @@
-import { MOCKUP_PARTNERS } from "@/constants/mockup";
+import { getPartners } from "@/api/partner";
+import { Partner } from "@/types/partner";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export const Partners = () => {
+  const [partners, setPartners] = useState<Partner[]>([]);
+  useEffect(() => {
+    getPartners().then((res) => {
+      if (res.ok) {
+        res.json().then((data) => {
+          setPartners(data);
+        });
+      }
+    });
+  }, []);
+
   return (
     <div className="flex flex-col gap-10 md:gap-20 w-full">
       <div className="text-3xl md:text-start text-center">
         PAST AND CURRENT PARTNERSHIPS
       </div>
       {/* Instagram like gallery, 3 photos in one row all the time, 1:1 */}
-      <div className="flex flex-wrap md:justify-between justify-center flex-row text-xl gap-5">
-        {MOCKUP_PARTNERS.map((partner, index) => (
+      <div className="grid grid-cols-4 gap-1">
+        {partners.map((partner, index) => (
           <Link
             href={`/collabs/partner/${partner.link}`}
             key={index}
             className="flex flex-col gap-2 transition-all duration-500 ease-in-out"
           >
             <div>{partner.title}</div>
-            <div className="h-40 md:h-80 flex items-center justify-center">
+            {/* make images square */}
+            <div className="relative w-full" style={{ paddingBottom: "100%" }}>
               <img
-                src={partner.partnerImage}
+                src={partner.image.find((image) => image.profile_image)?.image}
+                className="absolute object-cover w-full h-full -z-10"
                 alt={partner.title}
-                className="h-40 md:h-80 w-full object-cover"
               />
             </div>
           </Link>

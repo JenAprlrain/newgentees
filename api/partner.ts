@@ -5,8 +5,8 @@ export function createPartner(
   description: string,
   website: string,
   link: string,
-  image: number[],
-  images: number[][],
+  image: string,
+  images: string[],
   token: string
 ) {
   return fetch(`${API_URL}/v1/partner`, {

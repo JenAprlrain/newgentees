@@ -8,8 +8,8 @@ export function createClaim(
   chart: string,
   succesful: string,
   link: string,
-  image: number[],
-  open: boolean,
+  image: string,
+  open: string,
   contract: { address: string; name: string; type: string; abi: string },
   token: string
 ) {

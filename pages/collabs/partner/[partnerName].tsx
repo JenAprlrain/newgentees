@@ -1,36 +1,32 @@
-import { MOCKUP_PARTNERS } from "@/constants/mockup";
 import { PartnersPartner } from "@/views/collabs/partner";
+import { getPartner } from "@/api/partner";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Partner } from "@/types/partner";
+import toast from "react-hot-toast";
 
 export default function Page() {
   const router = useRouter();
   const { partnerName } = router.query;
+  const [partner, setPartner] = useState<Partner | null>(null);
 
   useEffect(() => {
     if (!router.isReady) return;
     if (partnerName) {
-      const partner = MOCKUP_PARTNERS.find(
-        (partner) => partner.link === partnerName
-      );
-
-      if (!partner) {
-        router.push("/general/partners");
-      }
+      getPartner(partnerName as string).then((res) => {
+        if (res.ok) {
+          res.json().then((data) => {
+            setPartner(data);
+          });
+        } else {
+          toast.error("Failed to fetch partner");
+          router.push("/collabs/partners");
+        }
+      });
     }
   }, [partnerName, router]);
 
-  const partner = MOCKUP_PARTNERS.find(
-    (partner) => partner.link === partnerName
-  );
-
-  if (!partner) {
-    return (
-      <div>
-        <h1>Partner not found</h1>
-      </div>
-    );
-  }
+  if (!partner) return null;
 
   return <PartnersPartner partner={partner} />;
 }

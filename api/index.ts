@@ -60,6 +60,6 @@ export function login(username: string, password: string) {
   });
 }
 
-export async function normalizeImage(image: File): Promise<number[]> {
-  return Buffer.from(await image.arrayBuffer()).toJSON().data;
+export async function normalizeImage(image: File): Promise<string> {
+  return Buffer.from(await image.arrayBuffer()).toString("base64");
 }
