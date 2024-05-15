@@ -1,20 +1,36 @@
+import { getGalleryImages } from "@/api/gallery";
 import { MOCKUP_GALLERY } from "@/constants/mockup";
+import { GalleryType } from "@/types/gallery";
+import { useEffect, useState } from "react";
 
 export const Gallery = () => {
+  const [images, setImages] = useState<GalleryType[]>([]);
+
+  useEffect(() => {
+    getGalleryImages().then((res) => {
+      if (res.ok) {
+        res.json().then((data: GalleryType[]) => {
+          setImages(data.sort((a, b) => a.index - b.index));
+        });
+      }
+    });
+  }, []);
+
   return (
     <div className="flex flex-col gap-2 w-full">
       <div className="text-3xl">Gallery</div>
-      {/* Instagram like gallery, 3 photos in one row all the time, 1:1 */}
       <div className="grid grid-cols-3 gap-1">
-        {MOCKUP_GALLERY.map((photo, index) => (
+        {images.map((photo, index) => (
+          // make images square
           <div
             key={index}
-            className="h-40 md:h-80 w-full bg-gray-200 flex items-center justify-center"
+            className="relative w-full"
+            style={{ paddingBottom: "100%" }}
           >
             <img
-              src={photo}
+              src={photo.image.image}
+              className="absolute object-cover w-full h-full -z-10"
               alt="gallery"
-              className="h-40 md:h-80 w-full object-cover"
             />
           </div>
         ))}

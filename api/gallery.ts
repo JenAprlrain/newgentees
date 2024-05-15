@@ -31,3 +31,16 @@ export function updateGalleryImage(id: string, index: number, token: string) {
 export function getGalleryImages() {
   return fetch(`${API_URL}/v1/gallery`);
 }
+
+export function deleteGalleryImage(id: string, token: string) {
+  return fetch(`${API_URL}/v1/gallery`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      id,
+    }),
+  });
+}

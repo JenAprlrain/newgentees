@@ -1,4 +1,4 @@
-export type Gallery = {
+export type GalleryType = {
   image: {
     id: string;
     image: string;
@@ -7,10 +7,10 @@ export type Gallery = {
     partner_id: string | null;
     claim_id: string | null;
     gallery_id: string | null;
-  }[];
+  };
   index: number;
   id: string;
-}[];
+};
 
 export type NormalizedGallery = {
   image: {
@@ -20,16 +20,3 @@ export type NormalizedGallery = {
   index: number;
   id: string;
 };
-
-function normalizeGallery(gallery: Gallery): NormalizedGallery[] {
-  return gallery.map((gallery) => {
-    return {
-      image: {
-        id: gallery.image[0].id,
-        image: gallery.image[0].image,
-      },
-      id: gallery.id,
-      index: gallery.index,
-    };
-  });
-}
