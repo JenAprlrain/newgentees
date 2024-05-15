@@ -1,60 +1,6 @@
 import { CommuniTeesABI, LifeStyleABI, RoyalTeesABI } from "@/contracts/fantom";
-import { Claim } from "@/types/claim";
 import { HouseCollectionsType } from "@/types/house-collections";
-import { Partner } from "@/types/partner";
 import { TeesContract } from "@/types/tees";
-
-export const MOCKUP_CLAIMS: Claim[] = [
-  {
-    open: "World Of Umans - Sea Umans",
-    care: `
-    <div>Wash: Cold</div>
-    <div>Dry: Hang Dry Only</div>
-    `,
-    chart: "",
-    eligibility: "Sea Uman Holders",
-    image: "/partners/uman/seauman.png",
-    specs: `
-    <div>GARMENT: Tee</div>
-    <div>FABRIC: 100% Dyed Cotton Tee</div>
-    <div>WEIGHT: 225 GSM</div>
-    `,
-    successful: "You got a sea uman tshirt!",
-    title: "Sea Umans",
-    link: "seaumans",
-    contract: {
-      type: "SUI",
-      objectType:
-        "0x4dea41637502f0668e651e676307fae5b0a0affdd95c56cc6e8dfce123db8d12::sea_uman_nft::SeaUmanNFT",
-      name: "seaumans",
-    },
-  },
-];
-
-export const MOCKUP_GALLERY = [
-  "https://nextjsconf-pics.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fzeit-inc%2Fimage%2Fupload%2Fc_scale%2Cw_720%2Fnextconf-photos%2FSexton_Vercel_0681.jpg&w=640&q=75",
-  "https://nextjsconf-pics.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fzeit-inc%2Fimage%2Fupload%2Fc_scale%2Cw_720%2Fnextconf-photos%2FSexton_Vercel_0637.jpg&w=640&q=75",
-  "https://nextjsconf-pics.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fzeit-inc%2Fimage%2Fupload%2Fc_scale%2Cw_720%2Fnextconf-photos%2FSexton_Vercel_0631.jpg&w=640&q=75",
-  "https://nextjsconf-pics.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fzeit-inc%2Fimage%2Fupload%2Fc_scale%2Cw_720%2Fnextconf-photos%2FSexton_Vercel_0681.jpg&w=640&q=75",
-  "https://nextjsconf-pics.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fzeit-inc%2Fimage%2Fupload%2Fc_scale%2Cw_720%2Fnextconf-photos%2FSexton_Vercel_0637.jpg&w=640&q=75",
-  "https://nextjsconf-pics.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fzeit-inc%2Fimage%2Fupload%2Fc_scale%2Cw_720%2Fnextconf-photos%2FSexton_Vercel_0631.jpg&w=640&q=75",
-  "https://nextjsconf-pics.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fzeit-inc%2Fimage%2Fupload%2Fc_scale%2Cw_720%2Fnextconf-photos%2FSexton_Vercel_0681.jpg&w=640&q=75",
-  "https://nextjsconf-pics.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fzeit-inc%2Fimage%2Fupload%2Fc_scale%2Cw_720%2Fnextconf-photos%2FSexton_Vercel_0637.jpg&w=640&q=75",
-  "https://nextjsconf-pics.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fzeit-inc%2Fimage%2Fupload%2Fc_scale%2Cw_720%2Fnextconf-photos%2FSexton_Vercel_0631.jpg&w=640&q=75",
-  "https://nextjsconf-pics.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fzeit-inc%2Fimage%2Fupload%2Fc_scale%2Cw_720%2Fnextconf-photos%2FSexton_Vercel_0631.jpg&w=640&q=75",
-  "https://nextjsconf-pics.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fzeit-inc%2Fimage%2Fupload%2Fc_scale%2Cw_720%2Fnextconf-photos%2FSexton_Vercel_0631.jpg&w=640&q=75",
-  "https://nextjsconf-pics.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fzeit-inc%2Fimage%2Fupload%2Fc_scale%2Cw_720%2Fnextconf-photos%2FSexton_Vercel_0631.jpg&w=640&q=75",
-  "https://nextjsconf-pics.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fzeit-inc%2Fimage%2Fupload%2Fc_scale%2Cw_720%2Fnextconf-photos%2FSexton_Vercel_0631.jpg&w=640&q=75",
-  "https://nextjsconf-pics.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fzeit-inc%2Fimage%2Fupload%2Fc_scale%2Cw_720%2Fnextconf-photos%2FSexton_Vercel_0631.jpg&w=640&q=75",
-  "https://nextjsconf-pics.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fzeit-inc%2Fimage%2Fupload%2Fc_scale%2Cw_720%2Fnextconf-photos%2FSexton_Vercel_0631.jpg&w=640&q=75",
-  "https://nextjsconf-pics.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fzeit-inc%2Fimage%2Fupload%2Fc_scale%2Cw_720%2Fnextconf-photos%2FSexton_Vercel_0631.jpg&w=640&q=75",
-  "https://nextjsconf-pics.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fzeit-inc%2Fimage%2Fupload%2Fc_scale%2Cw_720%2Fnextconf-photos%2FSexton_Vercel_0631.jpg&w=640&q=75",
-  "https://nextjsconf-pics.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fzeit-inc%2Fimage%2Fupload%2Fc_scale%2Cw_720%2Fnextconf-photos%2FSexton_Vercel_0631.jpg&w=640&q=75",
-  "https://nextjsconf-pics.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fzeit-inc%2Fimage%2Fupload%2Fc_scale%2Cw_720%2Fnextconf-photos%2FSexton_Vercel_0631.jpg&w=640&q=75",
-  "https://nextjsconf-pics.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fzeit-inc%2Fimage%2Fupload%2Fc_scale%2Cw_720%2Fnextconf-photos%2FSexton_Vercel_0631.jpg&w=640&q=75",
-  "https://nextjsconf-pics.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fzeit-inc%2Fimage%2Fupload%2Fc_scale%2Cw_720%2Fnextconf-photos%2FSexton_Vercel_0631.jpg&w=640&q=75",
-  "https://nextjsconf-pics.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fzeit-inc%2Fimage%2Fupload%2Fc_scale%2Cw_720%2Fnextconf-photos%2FSexton_Vercel_0631.jpg&w=640&q=75",
-];
 
 export const MOCKUP_HOUSE_COLLECTION: HouseCollectionsType[] = [
   {
@@ -130,5 +76,4 @@ export const MOCKUP_CONTRACTS: TeesContract[] = [
     address: "0xe010Ab037418431EeB65D59aAFB5059c13e8FAc2",
     name: "Lifestyle",
   },
-  ...MOCKUP_CLAIMS.map((claim) => claim.contract),
 ];

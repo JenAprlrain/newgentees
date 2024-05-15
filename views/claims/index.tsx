@@ -1,11 +1,26 @@
+import { getClaims } from "@/api/claim";
 import { Link } from "@/components/link";
-import { MOCKUP_CLAIMS } from "@/constants/mockup";
+import { Claim } from "@/types/claim";
+import { useEffect, useState } from "react";
 
 export const Claims = () => {
+  const [claims, setClaims] = useState<Claim[]>([]);
+
+  useEffect(() => {
+    getClaims().then((res) => {
+      if (res.ok) {
+        res.json().then((data) => {
+          console.log(data);
+          setClaims(data);
+        });
+      }
+    });
+  }, []);
+
   return (
     <div className="flex flex-col text-xl md:text-3xl">
       <div>Open Claims </div>
-      {MOCKUP_CLAIMS.map((claim, index) => (
+      {claims.map((claim, index) => (
         <div key={index} className="flex flex-col gap-4">
           <Link href={`/degen/claim/${claim.link}`}>{claim.open}</Link>
         </div>

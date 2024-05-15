@@ -1,9 +1,9 @@
 import { KioskClient, Network } from "@mysten/kiosk";
 import { getFullnodeUrl, SuiClient } from "@mysten/sui.js/client";
-import { MOCKUP_CLAIMS } from "@/constants/mockup";
 import { availableNFTs } from "@/api";
 import { NFT, TeesContract } from "@/types/tees";
 import invariant from "ts-invariant";
+import { Contract } from "@/types/claim";
 
 export const SUIClient = new SuiClient({ url: getFullnodeUrl("mainnet") });
 
@@ -102,15 +102,14 @@ export async function getCollections(address: string) {
 
 export async function getClaimableCollections(
   address: string,
-  claims: TeesContract[]
+  claims: Contract[]
 ) {
-  const filteredClaims = claims.filter((claim) => claim.type === "SUI");
   const collections = await getCollections(address);
 
   const filtered = collections.filter((collection) =>
-    filteredClaims.some((claim) => {
-      invariant(claim.type === "SUI", "Invalid contract type");
-      return claim.objectType === collection.type;
+    claims.some((claim) => {
+      invariant(claim.type === "move", "Invalid contract type");
+      return claim.address === collection.type;
     })
   );
 

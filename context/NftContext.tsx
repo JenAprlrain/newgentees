@@ -1,6 +1,8 @@
+import { getClaims } from "@/api/claim";
 import { EVMRead } from "@/chains/evm";
 import { getClaimableCollections, getCollections } from "@/chains/sui";
 import { MOCKUP_CONTRACTS } from "@/constants/mockup";
+import { Claim, Contract } from "@/types/claim";
 import { NFT } from "@/types/tees";
 import { useCurrentAccount } from "@mysten/dapp-kit";
 import {
@@ -36,6 +38,7 @@ export function useNft() {
 export const NftProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
   const suiAccount = useCurrentAccount();
   const ethAccount = useAccount();
+  const [collections, setCollections] = useState<Contract[]>([]);
 
   const [nftCollections, setNftCollections] = useState<
     {
@@ -46,13 +49,13 @@ export const NftProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
 
   const fetchNftCollections = useCallback(async () => {
     if (suiAccount) {
-      getClaimableCollections(suiAccount.address, MOCKUP_CONTRACTS).then(
-        (collections) => {
-          MOCKUP_CONTRACTS.forEach((contract) => {
-            if (contract.type !== "SUI") return;
+      getClaimableCollections(suiAccount.address, collections)
+        .then((inner_collections) => {
+          collections.forEach((contract) => {
+            if (contract.type !== "move") return;
 
-            const nfts = collections.filter(
-              (collection) => collection.type === contract.objectType
+            const nfts = inner_collections.filter(
+              (collection) => collection.type === contract.address
             );
 
             // if there is collection already, update nfts
@@ -93,8 +96,10 @@ export const NftProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
               },
             ]);
           });
-        }
-      );
+        })
+        .catch(() => {
+          toast.error("Failed to fetch NFTs");
+        });
     }
 
     if (ethAccount) {
@@ -127,13 +132,24 @@ export const NftProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
         }
       });
     }
-  }, [ethAccount, suiAccount, nftCollections]);
+  }, [ethAccount, suiAccount, nftCollections, collections]);
 
   useEffect(() => {
     fetchNftCollections();
+  }, [collections]);
+
+  useEffect(() => {
+    getClaims()
+      .then((res) => res.json())
+      .then((data: Claim[]) => {
+        setCollections(data.map((claim) => claim.contract));
+      })
+      .catch(() => {
+        toast.error("Failed to fetch collections");
+      });
   }, []);
 
-  useInterval(fetchNftCollections, 2500);
+  useInterval(fetchNftCollections, 20000);
 
   return (
     <NftContext.Provider

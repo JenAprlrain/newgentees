@@ -1,5 +1,4 @@
 import { getGalleryImages } from "@/api/gallery";
-import { MOCKUP_GALLERY } from "@/constants/mockup";
 import { GalleryType } from "@/types/gallery";
 import { useEffect, useState } from "react";
 

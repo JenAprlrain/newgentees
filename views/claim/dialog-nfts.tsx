@@ -25,7 +25,7 @@ export const NftsDialog = ({
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{name}</DialogTitle>
+          <DialogTitle>Claimable NFTs</DialogTitle>
           <DialogDescription>
             <div className="text-sm text-gray-300">
               {nftCollections

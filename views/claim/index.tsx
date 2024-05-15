@@ -14,16 +14,16 @@ export function ClaimSwag({ claim }: { claim: Claim }) {
       <div className="flex flex-col gap-5">
         <div className="justify-center items-center flex">
           <img
-            src={claim.image}
+            src={claim.image.image}
+            className="w-full h-72 object-cover"
             alt={claim.title}
-            className="max-w-[700px] h-full object-cover"
           />
         </div>
         <section>
           <div>Specs:</div>
           <div
             dangerouslySetInnerHTML={{
-              __html: claim.specs,
+              __html: claim.specs.replace(/\n/g, "<br>"),
             }}
           ></div>
         </section>
@@ -31,7 +31,7 @@ export function ClaimSwag({ claim }: { claim: Claim }) {
           <div>Care:</div>
           <div
             dangerouslySetInnerHTML={{
-              __html: claim.care,
+              __html: claim.care.replace(/\n/g, "<br>"),
             }}
           ></div>
         </section>
@@ -42,7 +42,12 @@ export function ClaimSwag({ claim }: { claim: Claim }) {
         <div className="pr-3">Sizing Charts</div>
       </div>
       {isSuiConnected ? (
-        <NftsDialog name={claim.contract.name} nftId={claim.contract.name} />
+        <div className="flex flex-col gap-2 lg:flex-row items-center justify-center">
+          <NftsDialog name={claim.contract.name} nftId={claim.contract.name} />
+          <Button className="pt-0" onClick={() => disconnect()}>
+            [DISCONNECT]
+          </Button>
+        </div>
       ) : (
         <ConnectModal trigger={<Button>[CONNECT TO CLAIM]</Button>} />
       )}

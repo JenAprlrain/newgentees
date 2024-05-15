@@ -1,14 +1,32 @@
-import { TeesContract } from "./tees";
+export interface Claim {
+  id: string;
+  contract_id: string;
+  image_id: string;
+  open: string;
+  title: string;
+  specs: string;
+  care: string;
+  eligibility: string;
+  chart: string;
+  succesful: string;
+  link: string;
+  image: Image;
+  contract: Contract;
+}
 
-export type Claim = {
-    open: string;
-    title: string;
-    image: string;
-    specs: string;
-    care: string;
-    eligibility: string;
-    chart: string;
-    successful: string;
-    link: string;
-    contract: TeesContract;
+export interface Image {
+  id: string;
+  image: string;
+  profile_image: any;
+  house_collection_id: any;
+  partner_id: any;
+}
+
+export interface Contract {
+  id: string;
+  address: string;
+  chain_id: any;
+  abi: any;
+  name: string;
+  type: string;
 }

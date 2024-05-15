@@ -1,19 +1,33 @@
-import { MOCKUP_CLAIMS } from "@/constants/mockup";
+import { getClaim } from "@/api/claim";
+import { Claim } from "@/types/claim";
 import { ClaimSwagSuccessful } from "@/views/claim/successful";
 import { useRouter } from "next/router";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export default function Page() {
+  const [claim, setClaim] = useState<Claim | null>(null);
   const router = useRouter();
-  const { nft } = router.query as { nft: string };
-  const MOCKUP_CLAIM = useMemo(
-    () => MOCKUP_CLAIMS.find((claim) => claim.link === nft),
-    [nft]
-  );
+  const { nft } = router.query as { nft: string; id: string };
 
-  if (!MOCKUP_CLAIM) {
-    return null;
-  }
+  useEffect(() => {
+    if (!router.isReady) return;
 
-  return <ClaimSwagSuccessful claim={MOCKUP_CLAIM} />;
+    if (nft) {
+      getClaim(nft).then((res) => {
+        if (res.ok) {
+          res.json().then((data) => {
+            setClaim(data);
+          });
+        } else {
+          router.push("/degen/claims");
+        }
+      });
+    } else {
+      router.push("/degen/claims");
+    }
+  }, [nft, router]);
+
+  if (!claim) return null;
+
+  return <ClaimSwagSuccessful claim={claim} />;
 }
