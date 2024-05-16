@@ -17,6 +17,7 @@
     "@radix-ui/react-dialog": "^1.0.5",
     "@rainbow-me/rainbowkit": "^2.0.6",
     "@tanstack/react-query": "^5.34.2",
+    "@tanstack/react-table": "^8.17.3",
     "@wagmi/core": "^2.9.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.378.0",

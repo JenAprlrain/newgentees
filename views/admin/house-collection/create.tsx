@@ -4,6 +4,7 @@ import { uploadImage } from "@/api/upload";
 import { Button } from "@/components/button";
 import { Dropdown } from "@/components/input/dropdown";
 import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/router";
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -30,6 +31,7 @@ export function HouseCollectionCreate() {
   const fileRef = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File | null>(null);
   const { token } = useAuth();
+  const router = useRouter();
 
   async function createHouseCollectionEvent(
     e: React.FormEvent<HTMLFormElement>
@@ -93,6 +95,7 @@ export function HouseCollectionCreate() {
     )
       .then((res) => {
         toast.success("House collection created");
+        router.push("/admin/house-collection/list");
       })
       .catch((err) => {
         toast.error("Failed to create house collection");

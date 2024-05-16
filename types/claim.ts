@@ -10,6 +10,7 @@ export interface Claim {
   chart: string;
   succesful: string;
   link: string;
+  open_for_claim: boolean;
   image: Image;
   contract: Contract;
 }

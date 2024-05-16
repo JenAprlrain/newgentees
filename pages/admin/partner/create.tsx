@@ -1,5 +1,5 @@
 import AuthProvider from "@/context/AuthContext";
-import { CreatePartner } from "@/views/admin/partner-create";
+import { CreatePartner } from "@/views/admin/partner/create";
 
 export default function Page() {
   return (

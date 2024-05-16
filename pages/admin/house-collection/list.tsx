@@ -1,10 +1,10 @@
 import AuthProvider from "@/context/AuthContext";
-import { HouseCollectionCreate } from "@/views/admin/house-collection/create";
+import { HouseCollectionList } from "@/views/admin/house-collection/list";
 
 export default function Page() {
   return (
     <AuthProvider>
-      <HouseCollectionCreate />
+      <HouseCollectionList />
     </AuthProvider>
   );
 }

@@ -4,6 +4,7 @@ import { uploadImage } from "@/api/upload";
 import { Button } from "@/components/button";
 import { Dropdown } from "@/components/input/dropdown";
 import AuthProvider, { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/router";
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -12,6 +13,7 @@ export function CreateCollection() {
   const fileRef = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File | null>(null);
   const { token } = useAuth();
+  const router = useRouter();
 
   async function createCollection(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -62,6 +64,10 @@ export function CreateCollection() {
         ) as HTMLInputElement
       ).value
     );
+    data.append(
+      "collection-claim",
+      (document.getElementById("collection-claim") as HTMLInputElement).value
+    );
 
     let dataObj: IFormData = {
       "collection-name": data.get("collection-name") as string,
@@ -80,6 +86,7 @@ export function CreateCollection() {
       "collection-claim-page-text": data.get(
         "collection-claim-page-text"
       ) as string,
+      "collection-claim": data.get("collection-claim") as "true" | "false",
     };
 
     if (dataObj["collection-name"].length === 0) {
@@ -132,6 +139,7 @@ export function CreateCollection() {
       dataObj["collection-name"].toLowerCase().replaceAll(" ", "-"),
       await uploadImage(dataObj["collection-image"], token),
       dataObj["collection-claim-page-text"],
+      dataObj["collection-claim"],
       {
         abi: dataObj["collection-abi"],
         address: dataObj["collection-contract"],
@@ -142,6 +150,7 @@ export function CreateCollection() {
     )
       .then(() => {
         toast.success("Collection created successfully");
+        router.push("/admin/collection/list");
       })
       .catch(() => {
         toast.error("Failed to create collection");
@@ -256,6 +265,15 @@ export function CreateCollection() {
           id="collection-abi"
         />
       </div>
+      <div className="flex flex-row gap-4">
+        <div>Open for claim?</div>
+        <input
+          type="checkbox"
+          id="collection-claim"
+          name="collection-claim"
+          value="true"
+        />
+      </div>
       <Button type="submit">[CREATE COLLECTION]</Button>
     </form>
   );
@@ -272,4 +290,5 @@ interface IFormData {
   "collection-abi": string;
   "collection-on-successful": string;
   "collection-claim-page-text": string;
+  "collection-claim": "true" | "false";
 }

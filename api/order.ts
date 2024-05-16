@@ -15,7 +15,8 @@ export function createOrder(
     physical_size: string;
     state: string;
     zipcode: string;
-  }
+  },
+  claim_id: string
 ) {
   return fetch(`${API_URL}/v1/order`, {
     method: "POST",
@@ -26,6 +27,7 @@ export function createOrder(
       id,
       signature,
       form,
+      claim_id,
     }),
   });
 }

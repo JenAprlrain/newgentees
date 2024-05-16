@@ -1,11 +1,13 @@
-import { normalizeImage } from "@/api";
 import { createPartner } from "@/api/partner";
 import { uploadImage } from "@/api/upload";
 import { Button } from "@/components/button";
 import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/router";
+import toast from "react-hot-toast";
 
 export function CreatePartner() {
   const { token } = useAuth();
+  const router = useRouter();
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData();
@@ -72,13 +74,14 @@ export function CreatePartner() {
     )
       .then((res) => {
         if (res.ok) {
-          alert("Partner created successfully");
+          toast.success("Partner created");
+          router.push("/admin/partner/list");
         } else {
-          alert("Failed to create partner");
+          toast.error("Failed to create partner");
         }
       })
       .catch(() => {
-        alert("Failed to create partner");
+        toast.error("Failed to create partner");
       });
   };
 

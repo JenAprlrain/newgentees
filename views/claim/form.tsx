@@ -93,19 +93,24 @@ export function ClaimSwagForm({ claim, id }: { claim: Claim; id: string }) {
       },
       {
         onSuccess: async (signature) => {
-          const create = await createOrder(id, signature.signature, {
-            address_line_one: data.address1,
-            address_line_two: data.address2,
-            city: data.city,
-            country: data.country,
-            email: data.email,
-            first_name: data.firstName,
-            last_name: data.lastName,
-            phone: "",
-            physical_size: activeItem,
-            zipcode: data.zip,
-            state: data.state,
-          });
+          const create = await createOrder(
+            id,
+            signature.signature,
+            {
+              address_line_one: data.address1,
+              address_line_two: data.address2,
+              city: data.city,
+              country: data.country,
+              email: data.email,
+              first_name: data.firstName,
+              last_name: data.lastName,
+              phone: "",
+              physical_size: activeItem,
+              zipcode: data.zip,
+              state: data.state,
+            },
+            claim.id
+          );
 
           if (!create) {
             toast.error("Failed to create order");

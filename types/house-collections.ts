@@ -7,6 +7,7 @@ export interface HouseCollectionType {
   link: string;
   type: string;
   image: Image[];
+  contract: Contract;
 }
 
 export interface Image {
@@ -15,4 +16,13 @@ export interface Image {
   profile_image?: boolean;
   house_collection_id: string;
   partner_id: any;
+}
+
+export interface Contract {
+  id: string;
+  address: string;
+  chain_id: any;
+  abi: any;
+  name: string;
+  type: string;
 }
