@@ -40,7 +40,7 @@ export function HouseCollectionList() {
             <div className="font-bold">Website:</div>
             <div>{collection.website}</div>
             <div className="flex flex-col md:flex-row gap-2 mt-4">
-              <Link href={`/admin/collection/edit/${collection.id}`}>
+              <Link href={`/admin/house-collection/edit/${collection.id}`}>
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                   Edit
                 </button>

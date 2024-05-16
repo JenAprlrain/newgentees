@@ -35,7 +35,7 @@ export function PartnerList() {
             <div className="font-bold">Website:</div>
             <div>{partner.website}</div>
             <div className="flex flex-col md:flex-row gap-2 mt-4">
-              <Link href={`/admin/collection/edit/${partner.id}`}>
+              <Link href={`/admin/partner/edit/${partner.id}`}>
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                   Edit
                 </button>

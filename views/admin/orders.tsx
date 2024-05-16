@@ -19,96 +19,29 @@ export function Orders() {
       });
   }, [token]);
 
-  /*
-  export interface Order {
-  id: string;
-  nft_id: string;
-  address1: string;
-  address2: string;
-  city: string;
-  country: string;
-  email: string;
-  firstName: string;
-  lastName: string;
-  state: string;
-  zip: string;
-  collection: string;
-  physical_size: string;
-  claim_id: string;
-  creation: string;
-  nft: Nft;
-  claim: Claim;
-}
-
-export interface Nft {
-  id: string;
-  address: string;
-  nft: string;
-  signature: string;
-}
-
-export interface Claim {
-  id: string;
-  contract_id: string;
-  image_id: string;
-  open: string;
-  title: string;
-  specs: string;
-  care: string;
-  eligibility: string;
-  chart: string;
-  succesful: string;
-  link: string;
-  open_for_claim: boolean;
-  contract: Contract;
-}
-
-export interface Contract {
-  id: string;
-  address: string;
-  chain_id: any;
-  abi: any;
-  name: string;
-  type: string;
-}
-
-  
-  */
-
   return (
     <div>
-      <table className="table-auto w-full mt-4">
-        <thead>
-          <tr>
-            <th>Order ID</th>
-            <th>Claim</th>
-            <th>Physical Size</th>
-            <th>Claim ID</th>
-            <th>Chain</th>
-            <th>Creation</th>
-          </tr>
-        </thead>
-        <tbody>
-          {orders
-            .sort((a, b) => {
-              return (
-                new Date(b.creation).getTime() - new Date(a.creation).getTime()
-              );
-            })
-            .map((order) => (
-              <tr key={order.id}>
-                <td className="border px-4 py-2">{order.id}</td>
-                <td className="border px-4 py-2">{order.claim.title}</td>
-                <td className="border px-4 py-2">{order.physical_size}</td>
-                <td className="border px-4 py-2">{order.claim_id}</td>
-                <td className="border px-4 py-2">
-                  {order.claim.contract.chain_id === "move" ? "sui" : "ftm"}{" "}
-                </td>
-                <td className="border px-4 py-2">{order.creation}</td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
+      <h1 className="text-3xl font-semibold">Orders List</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+        {orders.map((order) => (
+          <div key={order.id} className="border p-4">
+            <div className="font-bold">Order ID:</div>
+            <div>{order.id}</div>
+            <div className="font-bold">Claim:</div>
+            <div>{order.claim.title}</div>
+            <div className="font-bold">Physical Size:</div>
+            <div>{order.physical_size}</div>
+            <div className="font-bold">Claim ID:</div>
+            <div>{order.claim_id}</div>
+            <div className="font-bold">Chain:</div>
+            <div>
+              {order.claim.contract.chain_id === "move" ? "sui" : "ftm"}
+            </div>
+            <div className="font-bold">Creation:</div>
+            <div>{order.creation}</div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
