@@ -1,5 +1,4 @@
-import { MOCKUP_HOUSE_COLLECTION } from "@/constants/mockup";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { getHouseCollections } from "@/api/house-collection";
 import { HouseCollectionType } from "@/types/house-collections";

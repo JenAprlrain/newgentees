@@ -1,5 +1,4 @@
 import { getHouseCollection } from "@/api/house-collection";
-import { MOCKUP_HOUSE_COLLECTION } from "@/constants/mockup";
 import { HouseCollectionType } from "@/types/house-collections";
 import { HouseCollections } from "@/views/house-collections/house-collections";
 import { useRouter } from "next/router";
