@@ -1,5 +1,6 @@
 import { normalizeImage } from "@/api";
 import { createClaim } from "@/api/claim";
+import { uploadImage } from "@/api/upload";
 import { Button } from "@/components/button";
 import { Dropdown } from "@/components/input/dropdown";
 import AuthProvider, { useAuth } from "@/context/AuthContext";
@@ -129,7 +130,7 @@ export function CreateCollection() {
       "",
       dataObj["collection-on-successful"],
       dataObj["collection-name"].toLowerCase().replaceAll(" ", "-"),
-      await normalizeImage(dataObj["collection-image"]),
+      await uploadImage(dataObj["collection-image"], token),
       dataObj["collection-claim-page-text"],
       {
         abi: dataObj["collection-abi"],

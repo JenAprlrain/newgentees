@@ -1,8 +1,7 @@
 import { CommuniTeesABI, LifeStyleABI, RoyalTeesABI } from "@/contracts/fantom";
-import { HouseCollectionsType } from "@/types/house-collections";
 import { TeesContract } from "@/types/tees";
 
-export const MOCKUP_HOUSE_COLLECTION: HouseCollectionsType[] = [
+export const MOCKUP_HOUSE_COLLECTION = [
   {
     title: ">NEEDLE & CHAIN",
     image: "/house-collections/needlechain/needlechain.png",

@@ -6,6 +6,7 @@ export function createHouseCollection(
   website: string,
   link: string,
   image: string,
+  images: string[],
   type: string,
   contract: {
     address: string;
@@ -27,6 +28,7 @@ export function createHouseCollection(
       website,
       link,
       image,
+      images,
       type,
       contract,
     }),
@@ -37,6 +39,6 @@ export function getHouseCollection(id: string) {
   return fetch(`${API_URL}/v1/house_collection?id=${id}`);
 }
 
-export function listHouseCollections() {
+export function getHouseCollections() {
   return fetch(`${API_URL}/v1/house_collection`);
 }

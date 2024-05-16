@@ -1,5 +1,6 @@
 import { normalizeImage } from "@/api";
 import { createPartner } from "@/api/partner";
+import { uploadImage } from "@/api/upload";
 import { Button } from "@/components/button";
 import { useAuth } from "@/context/AuthContext";
 
@@ -61,11 +62,11 @@ export function CreatePartner() {
       dataObj["partner-description"],
       dataObj["partner-website"],
       dataObj["partner-link"],
-      await normalizeImage(dataObj["partner-image"]),
+      await uploadImage(dataObj["partner-image"], token),
       [
-        await normalizeImage(dataObj["partner-image-1"]),
-        await normalizeImage(dataObj["partner-image-2"]),
-        await normalizeImage(dataObj["partner-image-3"]),
+        await uploadImage(dataObj["partner-image-1"], token),
+        await uploadImage(dataObj["partner-image-2"], token),
+        await uploadImage(dataObj["partner-image-3"], token),
       ],
       token
     )
