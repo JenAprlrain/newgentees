@@ -4,12 +4,12 @@ import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { createId } from "@paralleldrive/cuid2";
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FB_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FB_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FB_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FB_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FB_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FB_APP_ID,
+  apiKey: "AIzaSyCk1vh2uIruFuLA-8_LAx5MDd4XV1PLB7I",
+  authDomain: "officialnftees-1f554.firebaseapp.com", // "process.env.NEXT_PUBLIC_FB_AUTH_DOMAIN
+  projectId: "officialnftees-1f554", // "process.env.NEXT_PUBLIC_FB_PROJECT_ID
+  storageBucket: "officialnftees-1f554.appspot.com", // "process.env.NEXT_PUBLIC_FB_STORAGE_BUCKET
+  messagingSenderId: "1048864794393", // "process.env.NEXT_PUBLIC_FB_SENDER_ID
+  appId: "1:1048864794393:web:367bf98b028e6d85644788", // "process.env.NEXT_PUBLIC_FB_APP_ID
 };
 
 // Initialize Firebase
