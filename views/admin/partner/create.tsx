@@ -10,53 +10,36 @@ export function CreatePartner() {
   const router = useRouter();
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = new FormData();
-    data.append(
-      "partner-name",
-      (document.getElementById("partner-name") as HTMLInputElement).value
-    );
-    data.append(
-      "partner-description",
-      (document.getElementById("partner-description") as HTMLInputElement).value
-    );
-    data.append(
-      "partner-website",
-      (document.getElementById("partner-website") as HTMLInputElement).value
-    );
-    data.append(
-      "partner-image-1",
-      (document.getElementById("partner-image-1") as HTMLInputElement)
-        .files?.[0] as File
-    );
-    data.append(
-      "partner-image-2",
-      (document.getElementById("partner-image-2") as HTMLInputElement)
-        .files?.[0] as File
-    );
-    data.append(
-      "partner-image-3",
-      (document.getElementById("partner-image-3") as HTMLInputElement)
-        .files?.[0] as File
-    );
-    data.append(
-      "partner-link",
-      (document.getElementById("partner-link") as HTMLInputElement).value
-    );
-    data.append(
-      "partner-image",
-      (document.getElementById("partner-image") as HTMLInputElement)
-        .files?.[0] as File
-    );
 
     const dataObj: IFormData = {
-      "partner-name": data.get("partner-name") as string,
-      "partner-description": data.get("partner-description") as string,
-      "partner-website": data.get("partner-website") as string,
-      "partner-image-1": data.get("partner-image-1") as File,
-      "partner-image-2": data.get("partner-image-2") as File,
-      "partner-image-3": data.get("partner-image-3") as File,
-      "partner-link": data.get("partner-link") as string,
-      "partner-image": data.get("partner-image") as File,
+      "partner-name": (
+        document.getElementById("partner-name") as HTMLInputElement
+      ).value,
+      "partner-description": (
+        document.getElementById("partner-description") as HTMLInputElement
+      ).value,
+      "partner-website": (
+        document.getElementById("partner-website") as HTMLInputElement
+      ).value,
+      // @ts-expect-error
+      "partner-image-1": (
+        document.getElementById("partner-image-1") as HTMLInputElement
+      ).files?.[0],
+      // @ts-expect-error
+      "partner-image-2": (
+        document.getElementById("partner-image-2") as HTMLInputElement
+      ).files?.[0],
+      // @ts-expect-error
+      "partner-image-3": (
+        document.getElementById("partner-image-3") as HTMLInputElement
+      ).files?.[0],
+      "partner-link": (
+        document.getElementById("partner-link") as HTMLInputElement
+      ).value,
+      // @ts-expect-error
+      "partner-image": (
+        document.getElementById("partner-image") as HTMLInputElement
+      ).files?.[0],
     };
 
     createPartner(
