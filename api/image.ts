@@ -29,7 +29,7 @@ async function uploadImageToFirebase(
     let storageRef = ref(storage, `images/${cuid}.gif`);
     await uploadBytes(storageRef, image, { contentType: "image/gif" });
     return {
-      url: `https://firebasestorage.googleapis.com/v0/b/${process.env.FB_STORAGE_BUCKET}/o/images%2F${cuid}.gif?alt=media`,
+      url: `https://firebasestorage.googleapis.com/v0/b/officialnftees-1f554.appspot.com/o/images%2F${cuid}.gif?alt=media`,
       cuid,
     };
   }
@@ -38,7 +38,7 @@ async function uploadImageToFirebase(
   let storageRef = ref(storage, `images/${cuid}.webp`);
   await uploadBytes(storageRef, image, { contentType: "image/webp" });
   return {
-    url: `https://firebasestorage.googleapis.com/v0/b/${process.env.FB_STORAGE_BUCKET}/o/images%2F${cuid}.webp?alt=media`,
+    url: `https://firebasestorage.googleapis.com/v0/b/officialnftees-1f554.appspot.com/o/images%2F${cuid}.webp?alt=media`,
     cuid,
   };
 }
