@@ -36,15 +36,15 @@ export function EditPartner({ partner }: { partner: Partner }) {
       [
         file2
           ? await uploadImage(file2, token)
-          : editPartner.image.filter((img) => !img.profile_image)[0].image ||
+          : editPartner.image.filter((img) => !img.profile_image)[0]?.image ||
             "",
         file3
           ? await uploadImage(file3, token)
-          : editPartner.image.filter((img) => !img.profile_image)[1].image ||
+          : editPartner.image.filter((img) => !img.profile_image)[1]?.image ||
             "",
         file4
           ? await uploadImage(file4, token)
-          : editPartner.image.filter((img) => !img.profile_image)[2].image ||
+          : editPartner.image.filter((img) => !img.profile_image)[2]?.image ||
             "",
       ].filter((img) => img.length > 0),
       token
