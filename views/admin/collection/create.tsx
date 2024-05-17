@@ -137,7 +137,7 @@ export function CreateCollection() {
       "",
       dataObj["collection-on-successful"],
       dataObj["collection-name"].toLowerCase().replaceAll(" ", "-"),
-      await uploadImage(dataObj["collection-image"], token),
+      await uploadImage(dataObj["collection-image"]),
       dataObj["collection-claim-page-text"],
       dataObj["collection-claim"],
       {

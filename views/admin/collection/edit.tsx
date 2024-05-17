@@ -30,7 +30,7 @@ export function EditCollection({ claim }: { claim: Claim }) {
       editedClaim.succesful,
       editedClaim.link,
       // if there is image, upload or use the same image
-      file ? await uploadImage(file, token) : editedClaim.image.image,
+      file ? await uploadImage(file) : editedClaim.image.image,
       editedClaim.open,
       editedClaim.open_for_claim ? "true" : "false",
       {

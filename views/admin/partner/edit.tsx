@@ -31,19 +31,19 @@ export function EditPartner({ partner }: { partner: Partner }) {
       editPartner.link,
       // @ts-expect-error
       file
-        ? await uploadImage(file, token)
+        ? await uploadImage(file)
         : editPartner.image.find((img) => img.profile_image)?.image,
       [
         file2
-          ? await uploadImage(file2, token)
+          ? await uploadImage(file2)
           : editPartner.image.filter((img) => !img.profile_image)[0]?.image ||
             "",
         file3
-          ? await uploadImage(file3, token)
+          ? await uploadImage(file3)
           : editPartner.image.filter((img) => !img.profile_image)[1]?.image ||
             "",
         file4
-          ? await uploadImage(file4, token)
+          ? await uploadImage(file4)
           : editPartner.image.filter((img) => !img.profile_image)[2]?.image ||
             "",
       ].filter((img) => img.length > 0),

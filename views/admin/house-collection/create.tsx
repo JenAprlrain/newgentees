@@ -83,17 +83,17 @@ export function HouseCollectionCreate() {
       formData.description,
       formData.website,
       formData.link,
-      await uploadImage(file, token),
+      await uploadImage(file),
       [
         // upload images if they exist
         formData["collection-image-1"]
-          ? await uploadImage(formData["collection-image-1"], token)
+          ? await uploadImage(formData["collection-image-1"])
           : "",
         formData["collection-image-2"]
-          ? await uploadImage(formData["collection-image-2"], token)
+          ? await uploadImage(formData["collection-image-2"])
           : "",
         formData["collection-image-3"]
-          ? await uploadImage(formData["collection-image-3"], token)
+          ? await uploadImage(formData["collection-image-3"])
           : "",
       ].filter((img) => img.length > 0),
       formData.type,
