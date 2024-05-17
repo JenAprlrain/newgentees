@@ -66,10 +66,17 @@ export function CreatePartner() {
       dataObj["partner-link"],
       await uploadImage(dataObj["partner-image"], token),
       [
-        await uploadImage(dataObj["partner-image-1"], token),
-        await uploadImage(dataObj["partner-image-2"], token),
-        await uploadImage(dataObj["partner-image-3"], token),
-      ],
+        // upload images if they exist
+        dataObj["partner-image-1"]
+          ? await uploadImage(dataObj["partner-image-1"], token)
+          : "",
+        dataObj["partner-image-2"]
+          ? await uploadImage(dataObj["partner-image-2"], token)
+          : "",
+        dataObj["partner-image-3"]
+          ? await uploadImage(dataObj["partner-image-3"], token)
+          : "",
+      ].filter((img) => img.length > 0),
       token
     )
       .then((res) => {
