@@ -42,16 +42,16 @@ export function EditHouseCollection({
         file2
           ? await uploadImage(file2, token)
           : editHouseCollection.image.filter((img) => !img.profile_image)[0]
-              .image,
+              .image || "",
         file3
           ? await uploadImage(file3, token)
           : editHouseCollection.image.filter((img) => !img.profile_image)[1]
-              .image,
+              .image || "",
         file4
           ? await uploadImage(file4, token)
           : editHouseCollection.image.filter((img) => !img.profile_image)[2]
-              .image,
-      ],
+              .image || "",
+      ].filter((img) => img.length > 0),
       editHouseCollection.type,
       {
         address: editHouseCollection.contract.address,

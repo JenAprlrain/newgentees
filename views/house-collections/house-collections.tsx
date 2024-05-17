@@ -17,17 +17,16 @@ export const HouseCollections = ({ house }: { house: HouseCollectionType }) => (
       {house.image
         .filter((image) => !image.profile_image)
         .map((image, key) => (
-          <div
-            style={{
-              backgroundImage: `url(${image.image})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              width: "340px",
-              height: "340px",
-              borderRadius: "10px",
-            }}
+          <img
             key={key}
-          ></div>
+            src={image.image}
+            className={
+              house.image.filter((img) => !img.profile_image).length === 1
+                ? "w-full h-auto"
+                : "w-1/3 h-auto"
+            }
+            alt={house.title}
+          />
         ))}
     </div>
   </div>
