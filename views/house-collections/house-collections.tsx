@@ -13,7 +13,7 @@ export const HouseCollections = ({ house }: { house: HouseCollectionType }) => (
     <a target="_blank" href={house.website}>
       <Button className="text-3xl">[GO TO WEBSITE]</Button>
     </a>
-    <div className="flex flex-row gap-5 flex-wrap h-full items-center">
+    <div className="flex flex-row gap-5 flex-wrap h-full justify-center items-center">
       {house.image
         .filter((image) => !image.profile_image)
         .map((image, key) => (
@@ -23,7 +23,7 @@ export const HouseCollections = ({ house }: { house: HouseCollectionType }) => (
             className={
               house.image.filter((img) => !img.profile_image).length === 1
                 ? "w-full h-auto"
-                : "w-1/3 h-auto"
+                : "w-1/4 h-auto"
             }
             alt={house.title}
           />
