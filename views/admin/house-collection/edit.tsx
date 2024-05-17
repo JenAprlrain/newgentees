@@ -19,9 +19,11 @@ export function EditHouseCollection({
   const fileRef = useRef<HTMLInputElement>(null);
   const fileRef2 = useRef<HTMLInputElement>(null);
   const fileRef3 = useRef<HTMLInputElement>(null);
+  const fileRef4 = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File | null>(null);
   const [file2, setFile2] = useState<File | null>(null);
   const [file3, setFile3] = useState<File | null>(null);
+  const [file4, setFile4] = useState<File | null>(null);
   const { token } = useAuth();
   const router = useRouter();
 
@@ -37,16 +39,16 @@ export function EditHouseCollection({
         ? await uploadImage(file, token)
         : editHouseCollection.image.find((img) => img.profile_image)?.image,
       [
-        file
-          ? await uploadImage(file, token)
-          : editHouseCollection.image.filter((img) => !img.profile_image)[0]
-              .image,
         file2
           ? await uploadImage(file2, token)
-          : editHouseCollection.image.filter((img) => !img.profile_image)[1]
+          : editHouseCollection.image.filter((img) => !img.profile_image)[0]
               .image,
         file3
           ? await uploadImage(file3, token)
+          : editHouseCollection.image.filter((img) => !img.profile_image)[1]
+              .image,
+        file4
+          ? await uploadImage(file4, token)
           : editHouseCollection.image.filter((img) => !img.profile_image)[2]
               .image,
       ],
@@ -148,12 +150,21 @@ export function EditHouseCollection({
           />
         </div>
         <div className="flex flex-row gap-4">
+          <div>House Collection Image 1:</div>
+          <input
+            type="file"
+            id="collection-image"
+            ref={fileRef}
+            onChange={(e) => setFile2(e.target.files?.[0] as File)}
+          />
+        </div>
+        <div className="flex flex-row gap-4">
           <div>House Collection Image 2:</div>
           <input
             type="file"
             id="collection-image-2"
             ref={fileRef2}
-            onChange={(e) => setFile2(e.target.files?.[0] as File)}
+            onChange={(e) => setFile3(e.target.files?.[0] as File)}
           />
         </div>
         <div className="flex flex-row gap-4">
@@ -162,7 +173,7 @@ export function EditHouseCollection({
             type="file"
             id="collection-image-3"
             ref={fileRef3}
-            onChange={(e) => setFile3(e.target.files?.[0] as File)}
+            onChange={(e) => setFile4(e.target.files?.[0] as File)}
           />
         </div>
         <div className="flex flex-row gap-4">
