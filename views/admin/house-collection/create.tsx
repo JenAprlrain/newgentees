@@ -131,8 +131,7 @@ export function HouseCollectionCreate() {
       </div>
       <div className="flex flex-row gap-4">
         <div>description:</div>
-        <input
-          type="text"
+        <textarea
           id="description"
           name="description"
           placeholder="Description"

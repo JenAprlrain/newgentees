@@ -71,8 +71,7 @@ export function EditCollection({ claim }: { claim: Claim }) {
         </div>
         <div className="flex flex-row gap-4">
           <div>collection specs:</div>
-          <input
-            type="text"
+          <textarea
             id="collection-specs"
             placeholder="Collection Specs"
             className="bg-black text-white"
@@ -84,8 +83,7 @@ export function EditCollection({ claim }: { claim: Claim }) {
         </div>
         <div className="flex flex-row gap-4">
           <div>collection care:</div>
-          <input
-            type="text"
+          <textarea
             id="collection-care"
             placeholder="Collection Care"
             className="bg-black text-white"

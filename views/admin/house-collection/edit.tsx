@@ -94,8 +94,7 @@ export function EditHouseCollection({
         </div>
         <div className="flex flex-row gap-4">
           <div>House Collection Description:</div>
-          <input
-            type="text"
+          <textarea
             id="collection-description"
             placeholder="House Collection Description"
             className="bg-black text-white"
