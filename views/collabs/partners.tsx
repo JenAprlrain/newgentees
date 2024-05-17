@@ -26,7 +26,7 @@ export const Partners = () => {
           <Link
             href={`/collabs/partner/${partner.link}`}
             key={index}
-            className="flex flex-col gap-2 transition-all duration-500 ease-in-out"
+            className="flex flex-col gap-2 transition-all duration-500 ease-in-out relative z-10"
           >
             <div>{partner.title}</div>
             {/* make images square */}

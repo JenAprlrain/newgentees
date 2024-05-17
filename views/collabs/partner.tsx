@@ -11,7 +11,7 @@ export const PartnersPartner = ({ partner }: { partner: Partner }) => (
     />
 
     <div
-      className="text-center text-2xl w-full text-balance"
+      className="text-center text-2xl w-full text-balance flex flex-col gap-5"
       dangerouslySetInnerHTML={{
         __html: partner.description,
       }}
