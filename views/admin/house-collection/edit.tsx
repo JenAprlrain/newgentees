@@ -227,7 +227,9 @@ export function EditHouseCollection({
           />
         </div>
         <div className="flex flex-row gap-4">
-          <div>House Collection Contract Type:</div>
+          <div>
+            House Collection Contract Type:(do not change if you are not sure)
+          </div>
           <input
             type="text"
             id="collection-contract-type"

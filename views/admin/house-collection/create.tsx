@@ -62,7 +62,7 @@ export function HouseCollectionCreate() {
         ).value,
         name: (document.getElementById("contract.name") as HTMLInputElement)
           .value,
-        type: "move",
+        type: "evm",
         abi: (
           document.getElementById("contract.abi") as HTMLInputElement
         ).value.replace(/\n/g, ""),

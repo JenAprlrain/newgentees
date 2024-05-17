@@ -16,12 +16,17 @@ export const Tees = ({
 }: {
   housecollections: HouseCollectionType[];
 }) => {
+  console.log(housecollections);
   const [activeItem, setActiveItem] = useState<HouseCollectionType | undefined>(
     housecollections[0] || undefined
   );
   const { openConnectModal } = useConnectModal();
   const { disconnectAsync } = useDisconnect();
   const { nftCollections, isEthConnected } = useNft();
+
+  useEffect(() => {
+    setActiveItem(housecollections[0]);
+  }, [housecollections]);
 
   if (housecollections.length === 0) {
     return (
@@ -47,7 +52,8 @@ export const Tees = ({
             label="MY TEES:"
             items={[
               ...housecollections
-                .filter((contract) => contract.type === "EVM")
+                .filter((collection) => collection.contract)
+                .filter((collection) => collection.contract.type === "evm")
                 .map((tee) => tee.title),
             ]}
             selectedItem={activeItem.title}
@@ -77,8 +83,8 @@ export const Tees = ({
           You don&apos;t have any tees yet
         </div>
       )}
-      {nftCollections.find((tees) => tees.name === activeItem.contract.name)
-        ?.nfts.length === 0 && (
+      {nftCollections.find((tees) => tees.name === activeItem.contract.name) ===
+        undefined && (
         <div className="text-center text-lg">
           You don&apos;t have any tees in this collection yet
         </div>

@@ -10,7 +10,6 @@ export const Claims = () => {
     getClaims().then((res) => {
       if (res.ok) {
         res.json().then((data) => {
-          console.log(data);
           setClaims(data);
         });
       }

@@ -101,16 +101,16 @@ export const NftProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
             ]);
           });
         })
-        .catch(() => {
-          toast.error("Failed to fetch NFTs");
-        });
+        .catch(() => {});
     }
 
     if (ethAccount) {
       houseCollections
         .map((collection) => collection.contract)
+        .filter((contract) => contract)
+        .filter((contract) => contract.type === "evm")
         .forEach(async (contract) => {
-          if (contract.type !== "EVM") return;
+          if (contract.type !== "evm") return;
           if (!ethAccount.address) return;
 
           try {
@@ -133,7 +133,6 @@ export const NftProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
               },
             ]);
           } catch (e) {
-            toast.error("Failed to fetch NFTs");
             return;
           }
         });
