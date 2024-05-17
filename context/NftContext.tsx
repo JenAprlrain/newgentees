@@ -1,8 +1,9 @@
 import { getClaims } from "@/api/claim";
+import { getHouseCollections } from "@/api/house-collection";
 import { EVMRead } from "@/chains/evm";
 import { getClaimableCollections, getCollections } from "@/chains/sui";
-import { MOCKUP_CONTRACTS } from "@/constants/mockup";
 import { Claim, Contract } from "@/types/claim";
+import { HouseCollectionType } from "@/types/house-collections";
 import { NFT } from "@/types/tees";
 import { useCurrentAccount } from "@mysten/dapp-kit";
 import {
@@ -39,6 +40,9 @@ export const NftProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
   const suiAccount = useCurrentAccount();
   const ethAccount = useAccount();
   const [collections, setCollections] = useState<Contract[]>([]);
+  const [houseCollections, setHouseCollections] = useState<
+    HouseCollectionType[]
+  >([]);
 
   const [nftCollections, setNftCollections] = useState<
     {
@@ -103,36 +107,38 @@ export const NftProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
     }
 
     if (ethAccount) {
-      MOCKUP_CONTRACTS.forEach(async (contract) => {
-        if (contract.type !== "EVM") return;
-        if (!ethAccount.address) return;
+      houseCollections
+        .map((collection) => collection.contract)
+        .forEach(async (contract) => {
+          if (contract.type !== "EVM") return;
+          if (!ethAccount.address) return;
 
-        try {
-          const nfts = await EVMRead(contract, {
-            address: ethAccount.address,
-          });
+          try {
+            const nfts = await EVMRead(contract.abi, {
+              address: ethAccount.address,
+            });
 
-          setNftCollections((prev) => [
-            ...prev,
-            {
-              name: contract.name,
-              nfts: [
-                ...nfts.map((nft) => ({
-                  id: nft.id,
-                  image: nft.image,
-                  name: nft.name,
-                  collectionAddress: contract.address,
-                })),
-              ],
-            },
-          ]);
-        } catch (e) {
-          toast.error("Failed to fetch NFTs");
-          return;
-        }
-      });
+            setNftCollections((prev) => [
+              ...prev,
+              {
+                name: contract.name,
+                nfts: [
+                  ...nfts.map((nft) => ({
+                    id: nft.id,
+                    image: nft.image,
+                    name: nft.name,
+                    collectionAddress: contract.address,
+                  })),
+                ],
+              },
+            ]);
+          } catch (e) {
+            toast.error("Failed to fetch NFTs");
+            return;
+          }
+        });
     }
-  }, [ethAccount, suiAccount, nftCollections, collections]);
+  }, [ethAccount, suiAccount, nftCollections, collections, houseCollections]);
 
   useEffect(() => {
     fetchNftCollections();
@@ -146,6 +152,13 @@ export const NftProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
       })
       .catch(() => {
         toast.error("Failed to fetch collections");
+      });
+
+    getHouseCollections()
+      .then((res) => res.json())
+      .then(setHouseCollections)
+      .catch(() => {
+        toast.error("Failed to fetch house collections");
       });
   }, []);
 
