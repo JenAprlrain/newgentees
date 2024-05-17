@@ -2,7 +2,6 @@
 import { initializeApp } from "firebase/app";
 import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { createId } from "@paralleldrive/cuid2";
-import { fileTypeFromBuffer } from "file-type";
 
 const firebaseConfig = {
   apiKey: process.env.FB_API_KEY,
@@ -18,16 +17,14 @@ const firebase = initializeApp(firebaseConfig);
 
 const storage = getStorage(firebase);
 
-async function uploadImageToFirebase(image: Buffer): Promise<{
+async function uploadImageToFirebase(
+  image: Buffer,
+  mime: string
+): Promise<{
   url: string;
   cuid: string;
 }> {
-  let fileType = await fileTypeFromBuffer(image);
-  if (fileType === undefined) {
-    throw new Error("Invalid Image");
-  }
-
-  if (fileType.mime === "image/gif") {
+  if (mime === "image/gif") {
     let cuid = createId();
     let storageRef = ref(storage, `images/${cuid}.gif`);
     await uploadBytes(storageRef, image, { contentType: "image/gif" });
