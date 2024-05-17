@@ -16,12 +16,28 @@ export const Tees = ({
 }: {
   housecollections: HouseCollectionType[];
 }) => {
-  const [activeItem, setActiveItem] = useState<HouseCollectionType>(
-    housecollections[0]
+  const [activeItem, setActiveItem] = useState<HouseCollectionType | undefined>(
+    housecollections[0] || undefined
   );
   const { openConnectModal } = useConnectModal();
   const { disconnectAsync } = useDisconnect();
   const { nftCollections, isEthConnected } = useNft();
+
+  if (housecollections.length === 0) {
+    return (
+      <div className="text-center text-lg">
+        You don&apos;t have any tees yet
+      </div>
+    );
+  }
+
+  if (!activeItem) {
+    return (
+      <div className="text-center text-lg">
+        You don&apos;t have any tees in this collection yet
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col gap-2">
