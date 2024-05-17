@@ -213,7 +213,6 @@ export function HouseCollectionCreate() {
           id="contract.address"
           name="contract.address"
           placeholder="Contract Address"
-          required
           className="bg-black text-white"
         />
       </div>
@@ -224,7 +223,6 @@ export function HouseCollectionCreate() {
           id="contract.name"
           name="contract.name"
           placeholder="Contract Name"
-          required
           className="bg-black text-white"
         />
       </div>
@@ -234,7 +232,6 @@ export function HouseCollectionCreate() {
           name="contract.abi"
           id="contract.abi"
           placeholder="Contract ABI"
-          required
           className="bg-black text-white"
         />
       </div>
