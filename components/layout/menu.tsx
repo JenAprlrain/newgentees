@@ -57,6 +57,7 @@ function MenuItself({
               <Link href="/collabs/partners">PARTNERS</Link>
               <Link href="/general/chains">Chains</Link>
               <Link href="/general/technology">Technology</Link>
+              <Link href="/general/team">Team</Link>
             </div>
             <div className="flex flex-col">
               <div className="flex flex-col">
@@ -69,7 +70,9 @@ function MenuItself({
               <div className="flex mt-10 flex-col">
                 <Title>DEVS/ARTISTS</Title>
                 <Link href="/collabs/learn-more">OUR SERVICE (LEARN MORE)</Link>
-                <Link href="/collab">COLLAB REQUEST FORM</Link>
+                <Link href="https://forms.gle/foF5hKbpuNkcH9UZ6">
+                  COLLAB REQUEST FORM
+                </Link>
               </div>
             </div>
           </div>
