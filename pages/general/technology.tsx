@@ -21,7 +21,7 @@ export default function Page() {
         ownership over the NFTee in the Web3 Wardrobe ™.
       </div>
       <div className="flex flex-row gap-2 items-center justify-center text-center">
-        <Shield size={64} weight="fill" />
+        <img className="w-16" src="/learn-more/shield.png" alt="technology-holografic-fingerprint"/>
         Protected by holographic shield.
       </div>
     </div>
