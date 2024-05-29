@@ -137,28 +137,20 @@ export function Gallery() {
     <div className="flex flex-col gap-2 w-full">
       <div className="flex flex-row justify-between">
         <div className="text-3xl">Gallery</div>
-        <button onClick={onSaveClick} className="text-3xl">
-          [SAVE]
-        </button>
+        <div className="flex flex-row gap-3">
+          <button
+            onClick={() => uploadInputRef.current?.click()}
+            className="text-3xl"
+          >
+            [UPLOAD]
+          </button>
+          <button onClick={onSaveClick} className="text-3xl">
+            [SAVE]
+          </button>
+        </div>
       </div>
       <div className="grid grid-cols-3 gap-1">
         {/* Upload button */}
-        <div
-          onClick={() => uploadInputRef.current?.click()}
-          className="relative w-full cursor-pointer"
-          style={{ paddingBottom: "100%" }}
-        >
-          <input
-            ref={uploadInputRef}
-            type="file"
-            className="hidden"
-            onChange={onUpload}
-            multiple
-          />
-          <div className="absolute w-full h-full bg-gray-200 flex justify-center items-center">
-            <div className="text-3xl text-black">[UPLOAD]</div>
-          </div>
-        </div>
         {gallery.map((photo, index) => (
           <div
             // @ts-expect-error
@@ -197,6 +189,22 @@ export function Gallery() {
             </div>
           </div>
         ))}
+        <div
+          onClick={() => uploadInputRef.current?.click()}
+          className="relative w-full cursor-pointer"
+          style={{ paddingBottom: "100%" }}
+        >
+          <input
+            ref={uploadInputRef}
+            type="file"
+            className="hidden"
+            onChange={onUpload}
+            multiple
+          />
+          <div className="absolute w-full h-full bg-gray-200 flex justify-center items-center">
+            <div className="text-3xl text-black">[UPLOAD]</div>
+          </div>
+        </div>
       </div>
     </div>
   );
