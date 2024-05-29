@@ -2,7 +2,7 @@ import { Button } from "@/components/button";
 
 export const LearnMore = () => {
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-10 lg:px-20">
       <div className="flex flex-col gap-5">
         <div className="text-3xl">WHO WE ARE</div>
         <div className="text-balance text-sm">
@@ -27,7 +27,8 @@ export const LearnMore = () => {
             experience
           </div>
         </div>
-        <div className="flex items-center justify-center py-5">
+        <div className="flex items-center justify-center">
+        <div className="flex py-5 lg:w-[700px] ">
           <video
             src={"/learn-more.mp4"}
             autoPlay
@@ -37,6 +38,7 @@ export const LearnMore = () => {
             controls
             className="relative -z-40"
           />
+        </div>
         </div>
       </div>
       <div className="flex flex-col gap-2 items-start">
@@ -50,9 +52,9 @@ export const LearnMore = () => {
           proof-of-ownership and authenticity consistent with our desire to
           provide maximum value to our partners and their communities.
         </div>
-        <Button>[GALLERY]</Button>
-        <Button>[PARTNERS]</Button>
-        <Button>[CREATE DROP EXPERIENCE]</Button>
+        <Button><a href="/general/gallery" target="_blank">[GALLERY]</a></Button>
+        <Button><a href="/collabs/partners" target="_blank">[PARTNERS]</a></Button>
+        <Button><a href="https://forms.gle/foF5hKbpuNkcH9UZ6" target="_blank">[CREATE DROP EXPERIENCE]</a></Button>
       </div>
     </div>
   );
