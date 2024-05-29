@@ -21,7 +21,7 @@ export const Partners = () => {
         PAST AND CURRENT PARTNERSHIPS
       </div>
       {/* Instagram like gallery, 3 photos in one row all the time, 1:1 */}
-      <div className="grid grid-cols-4 gap-1">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1">
         {partners.map((partner, index) => (
           <Link
             href={`/collabs/partner/${partner.link}`}
