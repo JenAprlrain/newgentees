@@ -49,7 +49,12 @@ const teamMembers: TeamMember[] = [
     twitter: "https://twitter.com/RithmiaAlgo",
   },
   {
-    name: "Repeatr",
+    name:"Sellek X",
+    role:"",
+    twitter:"https://x.com/SellekArt",
+  },
+  {
+    name: "Designer",
     role: "Design Lead",
     twitter: "https://twitter.com/REPEATR888",
   },
@@ -67,7 +72,7 @@ export const Team = () => {
   return (
     <div className="flex flex-col gap-2 w-full">
       <div className="text-3xl">Team</div>
-      <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4 mt-4">
+      <div className="grid items-center justify-center grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
         {teamMembers.map((member, index) => (
           <div key={index} className="flex flex-col items-center gap-2">
             <div className="relative w-24 h-24">

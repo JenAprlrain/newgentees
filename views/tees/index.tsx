@@ -49,7 +49,7 @@ export const Tees = ({
       <div className="font-normal text-3xl leading-8 flex flex-col">
         <div className="flex flex-row gap-2 mb-4">
           <Dropdown
-            label="MY TEES:"
+            label="COLLECTION:"
             items={[
               ...housecollections
                 .filter((collection) => collection.contract)

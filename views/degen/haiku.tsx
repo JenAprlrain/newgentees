@@ -5,7 +5,8 @@ import { useState } from "react";
 export const Haiku = () => {
   const [haikuText, setHaikuText] = useState("");
   return (
-    <div className="font-normal text-3xl leading-8 text-start flex flex-col gap-6">
+    <div className="font-normal text-2xl leading-8 text-start flex flex-col gap-6">
+      <div className="text-3xl">HAIKU GANG</div>
       <div>Real ones write poems.</div>
       <div className="flex flex-col w-full border-white border text-[#2BE233] text-center gap-10 pt-5">
         {haikuText.length > 0 ? (

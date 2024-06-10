@@ -18,7 +18,8 @@ export const Claims = () => {
 
   return (
     <div className="flex flex-col text-xl md:text-3xl">
-      <div>Open Claims </div>
+      <div className="w-full justify-start">CLAIM APPAREL</div>
+      <div className="font-bold">Open Claims </div>
       {claims.map((claim, index) => (
         <div key={index} className="flex flex-col gap-4">
           <Link href={`/degen/claim/${claim.link}`}>{claim.open}</Link>

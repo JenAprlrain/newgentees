@@ -33,7 +33,7 @@ export default function App({ Component, pageProps }: AppProps) {
               <NftProvider>
                 <Layout>
                   <Head>
-                    <title>Official Nftees</title>
+                    <title>TEES</title>
                   </Head>
                   <Component {...pageProps} />
                 </Layout>

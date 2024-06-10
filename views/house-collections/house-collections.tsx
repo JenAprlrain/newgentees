@@ -11,7 +11,7 @@ export const HouseCollections = ({ house }: { house: HouseCollectionType }) => (
       }}
     ></div>
     <a target="_blank" href={house.website}>
-      <Button className="text-3xl">[GO TO WEBSITE]</Button>
+      <Button className="text-3xl hover:text-matrix-green transition-all">{">"}HOUSE COLLECTIONS</Button>
     </a>
     <div className="flex flex-row gap-5 flex-wrap h-full justify-center items-center">
       {house.image

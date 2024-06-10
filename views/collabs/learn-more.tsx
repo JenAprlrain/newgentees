@@ -2,7 +2,7 @@ import { Button } from "@/components/button";
 
 export const LearnMore = () => {
   return (
-    <div className="flex flex-col gap-10 lg:px-20">
+    <div className="flex flex-col gap-10 lg:px-2">
       <div className="flex flex-col gap-5">
         <div className="text-3xl">WHO WE ARE</div>
         <div className="text-balance text-sm">
@@ -15,11 +15,9 @@ export const LearnMore = () => {
       <div className="flex flex-col gap-2">
         <div className="text-3xl">HOW IT WORKS</div>
         <div className="flex flex-col gap-3">
-          <div>1 - Take 5 minutes and complete our Drop Request [FORM]</div>
+          <div>1 - Take 5 minutes and complete our Drop Request <a href="https://forms.gle/foF5hKbpuNkcH9UZ6" className="hover:text-matrix-green transition-all duration-300">[FORM]</a> </div>
           <div>
-            2 - We will review the form and contact you. If we can add value to
-            your vision, we will work with your team regarding all drop details
-            (drop size, timing, garment, etc).{" "}
+            2 - WE WILL REVIEW THE FORM AND CONTACT YOU. IF WE CAN ADD VALUE TO YOUR VISION, WE WILL WORK WITH YOUR TEAM REGARDING ALL DROP DETAILS (DESIGN, DROP SIZE, TIMING, GARMENT, ETC).{" "}
           </div>
           <div>
             3 - We do all the product development, production, and fulfillment
@@ -43,7 +41,7 @@ export const LearnMore = () => {
       </div>
       <div className="flex flex-col gap-2 items-start">
         <div>
-          <span className="font-bold">[Why not print on demand?]</span> Drop
+          <div className="font-bold">Why not print on demand?</div> Drop
           shipping and print on demand solutions often offer less customization
           options and lower quality consistent with today’s fast fashion and
           mass production. We are completely counter-culture to this movement,
@@ -52,9 +50,9 @@ export const LearnMore = () => {
           proof-of-ownership and authenticity consistent with our desire to
           provide maximum value to our partners and their communities.
         </div>
-        <Button><a href="/general/gallery" target="_blank">[GALLERY]</a></Button>
-        <Button><a href="/collabs/partners" target="_blank">[PARTNERS]</a></Button>
-        <Button><a href="https://forms.gle/foF5hKbpuNkcH9UZ6" target="_blank">[CREATE DROP EXPERIENCE]</a></Button>
+        <Button><a href="/general/gallery" target="_blank">{">"}GALLERY</a></Button>
+        <Button><a href="/collabs/partners" target="_blank">{">"}PARTNERS</a></Button>
+        <Button><a href="https://forms.gle/foF5hKbpuNkcH9UZ6" target="_blank">{">"}CREATE DROP EXPERIENCE</a></Button>
       </div>
     </div>
   );
