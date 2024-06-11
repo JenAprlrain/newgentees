@@ -23,7 +23,7 @@ export const Dropdown = ({
           <CaretDown />
         </div>
       </Menu.Button>
-      <Menu.Items className="flex flex-col bg-black rounded-md items-end justify-end pr-10 right-0 z-10">
+      <Menu.Items className="flex flex-col bg-black rounded-md items-end pr-10 right-0 z-10">
         {items.map((item) => (
           <Menu.Item key={item}>
             {({ active }) => (
