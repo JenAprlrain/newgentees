@@ -32,39 +32,47 @@ const teamMembers: TeamMember[] = [
     name: "James",
     role: "Team Lead",
     twitter: "https://twitter.com/0xJMONEY",
+    image:"/team/JMONEY Jersey.png",
   },
   {
     name: "Jen",
     role: "Developer",
     twitter: "https://twitter.com/Jen_aprilrain",
+    image:"/team/JEN Jersey.png",
   },
   {
     name: "Fesal",
     role: "Lead Developer",
     twitter: "https://twitter.com/iamknownasfesal",
+    image:"/team/FESAL Jersey.png",
   },
   {
     name: "RithmiaAlgo",
     role: "Marketing Lead",
     twitter: "https://twitter.com/RithmiaAlgo",
+    image:"/team/ALGO Jersey.png",
   },
   {
     name:"Sellek X",
     role:"",
     twitter:"https://x.com/SellekArt",
+    image:"",
   },
   {
     name: "Designer",
     role: "Design Lead",
     twitter: "https://twitter.com/REPEATR888",
+    image:"/team/REPEATR JErsey.png"
   },
   {
     name: "Sellek",
     role: "Design Lead",
+    image:"/team/SELLEK Jersey.png",
   },
   {
     name: "Zan",
     role: "MV/Strategy Lead",
+    image:"/team/ZAN Jersey.png",
   },
 ];
 
