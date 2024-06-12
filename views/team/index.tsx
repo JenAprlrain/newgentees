@@ -59,12 +59,6 @@ const teamMembers: TeamMember[] = [
     image:"",
   },
   {
-    name: "Designer",
-    role: "Design Lead",
-    twitter: "https://twitter.com/REPEATR888",
-    image:"/team/REPEATR JErsey.png"
-  },
-  {
     name: "Sellek",
     role: "Design Lead",
     image:"/team/SELLEK Jersey.png",
@@ -80,10 +74,10 @@ export const Team = () => {
   return (
     <div className="flex flex-col gap-2 w-full">
       <div className="text-3xl">Team</div>
-      <div className="grid items-center justify-center grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
+      <div className="grid items-center justify-center grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-4 mt-4">
         {teamMembers.map((member, index) => (
           <div key={index} className="flex flex-col items-center gap-2">
-            <div className="relative w-24 h-24">
+            <div className="relative w-64 h-64">
               <img
                 src={member.image || "/house-collections/communitees/3.png"}
                 className="object-cover w-full h-full"
