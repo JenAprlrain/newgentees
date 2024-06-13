@@ -1,0 +1,101 @@
+@font-face {
+  font-family: 'Aller Bold Italic';
+  src: url('../public/fonts/Aller_BdIt.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+.container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  background-color: black;
+  color: #ecf0f1;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.typingText {
+  font-size: 24px;
+  white-space: pre-wrap;
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  background-color: black;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to {
+    background-color: transparent;
+  }
+  50% {
+    background-color: black;
+  }
+}
+
+.enterTextContainer {
+  margin-top: 20px;
+}
+
+.enterText {
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+}
+
+.enterText:hover {
+  color: #00ff00;
+}
+
+.teesContainer {
+  position: relative;
+  margin-top: 20px; /* Adjust spacing between first text and TEES animation */
+}
+
+.teesText {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 120px;
+  font-family: "Aller Bold Italic"
+}
+
+.teesBorder {
+  position: absolute;
+  top: 12px; /* Adjust top offset */
+  left: -18px;
+  right: -38px;
+  bottom: 12px; /* Adjust bottom offset */
+  border: 15px solid transparent;
+  box-sizing: border-box;
+  animation: drawBorder 4s forwards;
+}
+
+@keyframes drawBorder {
+  0% {
+    border-color: transparent;
+  }
+  25% {
+    border-top-color: white;
+  }
+  50% {
+    border-right-color: white;
+  }
+  75% {
+    border-bottom-color: white;
+  }
+  100% {
+    border-color: white;
+  }
+}
+
+.secondTextContainer {
+  margin-top: 20px; /* Adjust the spacing between TEES and second text */
+  font-size: 24px;
+  white-space: pre-wrap;
+}
