@@ -2,7 +2,7 @@ import { Button } from "@/components/button";
 
 export const LearnMore = () => {
   return (
-    <div className="flex flex-col gap-10 lg:px-2">
+    <div className="flex flex-col gap-10">
       <div className="flex flex-col gap-5">
         <div className="text-3xl">WHO WE ARE</div>
         <div className="text-balance text-sm">
